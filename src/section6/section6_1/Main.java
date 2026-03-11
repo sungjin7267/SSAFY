@@ -1,4 +1,4 @@
-package section6_1;
+package section6.section6_1;
 import java.util.*;
 
 public class Main {
