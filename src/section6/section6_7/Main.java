@@ -3,21 +3,20 @@ import java.util.*;
 
 public class Main {
     public String solution(String cur,String str){
-        String answer="NO";
-        Queue<Character>q1=new LinkedList<>();
-        for(char x:str.toCharArray()){
-            q1.offer(x);
-        }
-        Queue<Character>q2=new LinkedList<>();
+        String answer="YES";
+        Queue<Character>q=new LinkedList<>();
         for(char x:cur.toCharArray()){
-            q2.offer(x);
+            q.offer(x);
         }
-        while(!q2.isEmpty()){
-           char c=q2.poll();
-           while(c!=q1.peek()) q1.poll();
+        for(char x: str.toCharArray()){
+            if(q.contains(x)){ //str에 char하나씩 보면서 큐에 있는지 확인 있다면,
+                if(x!=q.poll()){ //가장 앞이 아니라면
+                    return "NO";
+                }
+            }
         }
-        if(q1.equals(q2)) return "NO";
-        return answer;
+        if(q.isEmpty()) return answer;
+        else return "NO";
     }
     public static void main(String args[]){
         Scanner sc=new Scanner(System.in);
